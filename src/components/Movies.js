@@ -4,14 +4,30 @@ import styled from 'styled-components';
 
 const MoviesWrapper = styled.div`
   background: lightblue;
-  height: 500px;
+  min-height: 500px;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  li {
+  }
 `;
 
-const movies = ({ items }) => {
-  const movieItem = items.map(item => <li>{item}</li>);
+const movies = ({ results }) => {
+  console.log(results);
+
+  let movieResult = results.map(res => (
+    <li key={res.id}>
+      <p>{res.original_title}</p>
+      <img src={`https://image.tmdb.org/t/p/w200/${res.poster_path}`} alt="" />
+    </li>
+  ));
   return (
     <MoviesWrapper>
-      <h1>testing</h1>
+      <ul>{movieResult}</ul>
     </MoviesWrapper>
   );
 };
